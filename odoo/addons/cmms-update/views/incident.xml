@@ -1,14 +1,18 @@
 <openerp>
-<data>
-<record model="ir.ui.view" id="incident_form_view">
-<field name="name">cmmms.update.incident</field>
-<field name="model">cmms.incident</field>
-<field name="inherit_id" ref="cmms.cmms_incident-view"/>
-<field name="arch" type="xml">
-     <field name="ref" position="replace">
-            <field name="ref" />
-     </field>
-</field>
-</record>
-</data>
+    <data>
+        <record model="ir.ui.view" id="incident_form_view">
+            <field name="name">cmmms.update.incident</field>
+            <field name="model">cmms.incident</field>
+            <field name="inherit_id" ref="cmms.cmms_incident-view"/>
+            <field name="arch" type="xml">
+                <field name="ref" position="replace">
+                    <field name="request_link"/>
+                    <field name="cm_id" attrs="{'invisible':[('request_link','!=', 'cmms.cm')]}"/>
+                    <field name="pm_id" attrs="{'invisible':[('request_link','!=', 'cmms.pm')]}"/>
+                    <field name="checklist_history_id" attrs="{'invisible':[('request_link','!=', 'cmms.checklist.history')]}"/>
+                    <field name="intervention_id" attrs="{'invisible':[('request_link','!=', 'cmms.intervention')]}"/>
+                </field>
+            </field>
+        </record>
+    </data>
 </openerp>

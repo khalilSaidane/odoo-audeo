@@ -9,6 +9,20 @@ class Incident(models.Model):
 
     #   ref = fields.Reference(domain=[('create_uid','=','self.env.user')])
 
+    request_link = fields.Selection([
+        ('cmms.cm', 'Maintenance corrective'),
+        ('cmms.pm', 'Maintenance préventive'),
+        ('cmms.checklist.history', 'Liste de contrôle'),
+        ('cmms.intervention', 'Demande d intervention'),
+    ], required=True)
+
+    cm_id = fields.Many2one('cmms.cm', string='Maintenance corrective')
+    pm_id = fields.Many2one('cmms.pm', string='Maintenance préventive', domain=lambda self: [('create_uid','=',self.env.uid)])
+    checklist_history_id = fields.Many2one('cmms.checklist.history', string='Liste de contrôle')
+    intervention_id = fields.Many2one('cmms.intervention', string='Demande d intervention', domain=lambda self: [('user2_id','=',self.env.uid)])
+
+
+
     # @api.onchange('ref')
     #   def _on_ref_selected(self):
     #      for rec in self:
@@ -16,9 +30,11 @@ class Incident(models.Model):
     #               print(self.ref.create_uid.id == self.env.user.id)
     #               return {'domain': {'ref': [('create_uid.id','=',self.env.user.id)]}}
 
+
+
     def action_done(self, cr, uid, ids, context=None):
         self.action_broadcast(cr, uid, ids, context)
-        return   super(Incident, self).action_done(cr, uid, ids)
+        return super(Incident, self).action_done(cr, uid, ids)
 
     """email"""
 
@@ -63,5 +79,6 @@ class Incident(models.Model):
         a = object_inter.ref
 
         self.pool.get('cmms.parameter.mail').send_email(cr, uid, data_email, module='cmms', param='cmms_event_mail')
+
 
 """fin"""
