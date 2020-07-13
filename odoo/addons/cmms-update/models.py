@@ -18,7 +18,7 @@ class Incident(models.Model):
 
     def action_done(self, cr, uid, ids, context=None):
         self.action_broadcast(cr, uid, ids, context)
-        return super(Incident, self).action_done(cr, uid, ids)
+        return   super(Incident, self).action_done(cr, uid, ids)
 
     """email"""
 
@@ -47,7 +47,7 @@ class Incident(models.Model):
                     object_inter.name, object_inter.create_uid.name,
                     object_inter.name,
                     object_inter.priority,
-                    object_inter.ref,
+                    object_inter.ref.name,
                     object_inter.date,
 
                 )
@@ -60,6 +60,7 @@ class Incident(models.Model):
                         'body_html': text_inter,
                     }
                 )
+        a = object_inter.ref
 
         self.pool.get('cmms.parameter.mail').send_email(cr, uid, data_email, module='cmms', param='cmms_event_mail')
 
