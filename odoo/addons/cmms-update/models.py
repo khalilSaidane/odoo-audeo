@@ -5,19 +5,20 @@ from openerp.osv import osv
 
 
 class Incident(models.Model):
-    _inherit = 'cmms.incident'
-#   ref = fields.Reference(domain=[('create_uid','=','self.env.user')])
+    _inherit = ['cmms.incident']
 
-# @api.onchange('ref')
-#   def _on_ref_selected(self):
-#      for rec in self:
-#        if rec.ref:
-#               print(self.ref.create_uid.id == self.env.user.id)
-#               return {'domain': {'ref': [('create_uid.id','=',self.env.user.id)]}}
+    #   ref = fields.Reference(domain=[('create_uid','=','self.env.user')])
+
+    # @api.onchange('ref')
+    #   def _on_ref_selected(self):
+    #      for rec in self:
+    #        if rec.ref:
+    #               print(self.ref.create_uid.id == self.env.user.id)
+    #               return {'domain': {'ref': [('create_uid.id','=',self.env.user.id)]}}
 
     def action_done(self, cr, uid, ids, context=None):
-        self.action_broadcast(cr,uid,ids,context)
-        return super(Incident, self).action_done(cr,uid,ids)
+        self.action_broadcast(cr, uid, ids, context)
+        return super(Incident, self).action_done(cr, uid, ids)
 
     """email"""
 
@@ -53,7 +54,7 @@ class Incident(models.Model):
                 data_email.append(
                     {
                         'subject': "Service du Gmao %s" % object_inter.name,
-                        'email_to': object_inter.create_uid,
+                        'email_to': object_inter.create_uid.login,
                         'subtype': 'html',
                         'body_text': False,
                         'body_html': text_inter,
@@ -61,6 +62,5 @@ class Incident(models.Model):
                 )
 
         self.pool.get('cmms.parameter.mail').send_email(cr, uid, data_email, module='cmms', param='cmms_event_mail')
-
 
 """fin"""
