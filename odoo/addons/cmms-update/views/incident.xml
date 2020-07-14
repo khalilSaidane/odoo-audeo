@@ -6,12 +6,30 @@
             <field name="inherit_id" ref="cmms.cmms_incident-view"/>
             <field name="arch" type="xml">
                 <field name="ref" position="replace">
-                    <field name="request_link"/>
-                    <field name="cm_id" attrs="{'invisible':[('request_link','!=', 'cmms.cm')]}"/>
-                    <field name="pm_id" attrs="{'invisible':[('request_link','!=', 'cmms.pm')]}"/>
-                    <field name="checklist_history_id" attrs="{'invisible':[('request_link','!=', 'cmms.checklist.history')]}"/>
-                    <field name="intervention_id" attrs="{'invisible':[('request_link','!=', 'cmms.intervention')]}"/>
+                    <group>
+                        <field name="request_link"/>
+                    </group>
+                    <group>
+                        <field name="cm_id" attrs="{'invisible':[('request_link','!=', 'cmms.cm')]}"/>
+                        <field name="pm_id" attrs="{'invisible':[('request_link','!=', 'cmms.pm')]}"/>
+                        <field name="checklist_history_id"
+                               attrs="{'invisible':[('request_link','!=', 'cmms.checklist.history')]}"/>
+                        <field name="intervention_id"
+                               attrs="{'invisible':[('request_link','!=', 'cmms.intervention')]}"/>
+                    </group>
                 </field>
+
+                <notebook colspan="4">
+                    <page string="General" autofocus="True" >
+                        <group>
+                            <field name="equipment_id" string="Equipement" readonly="1"/>
+                            <field name="equipment_type" readonly="1"/>
+                        </group>
+                    </page>
+                </notebook>
+                <page string="General" position="attributes">
+                    <attribute name='invisible'>1</attribute>
+                </page>
             </field>
         </record>
     </data>

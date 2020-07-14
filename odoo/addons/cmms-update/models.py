@@ -7,8 +7,6 @@ from openerp.osv import osv
 class Incident(models.Model):
     _inherit = ['cmms.incident']
 
-    #   ref = fields.Reference(domain=[('create_uid','=','self.env.user')])
-
     request_link = fields.Selection([
         ('cmms.cm', 'Maintenance corrective'),
         ('cmms.pm', 'Maintenance préventive'),
@@ -20,15 +18,32 @@ class Incident(models.Model):
     pm_id = fields.Many2one('cmms.pm', string='Maintenance préventive', domain=lambda self: [('create_uid','=',self.env.uid)])
     checklist_history_id = fields.Many2one('cmms.checklist.history', string='Liste de contrôle')
     intervention_id = fields.Many2one('cmms.intervention', string='Demande d intervention', domain=lambda self: [('user2_id','=',self.env.uid)])
+    equipment_type = fields.Char(related='equipment_id.type',string='Référence machine')
 
+    @api.onchange('cm_id')
+    def cm_id_on_change(self):
+        for rec in self:
+            if rec.cm_id:
+                rec.equipment_id = rec.cm_id.equipment_id
 
+    @api.onchange('pm_id')
+    def pm_id_on_change(self):
+        for rec in self:
+            if rec.pm_id:
+                rec.equipment_id = rec.pm_id.equipment_id
 
-    # @api.onchange('ref')
-    #   def _on_ref_selected(self):
-    #      for rec in self:
-    #        if rec.ref:
-    #               print(self.ref.create_uid.id == self.env.user.id)
-    #               return {'domain': {'ref': [('create_uid.id','=',self.env.user.id)]}}
+    @api.onchange('checklist_history_id')
+    def checklist_history_id_on_change(self):
+        for rec in self:
+            if rec.checklist_history_id:
+                rec.equipment_id = rec.checklist_history_id.equipment_id
+
+    @api.onchange('intervention_id')
+    def intervention_id_on_change(self):
+        for rec in self:
+            if rec.intervention_id:
+                rec.equipment_id = rec.intervention_id.equipment_id
+
 
 
 
@@ -82,3 +97,4 @@ class Incident(models.Model):
 
 
 """fin"""
+
