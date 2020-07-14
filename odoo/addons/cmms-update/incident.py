@@ -2,7 +2,7 @@
 
 from openerp import models, fields, api
 from openerp.osv import osv
-
+from datetime import datetime
 
 class Incident(models.Model):
     _inherit = ['cmms.incident']
@@ -16,10 +16,12 @@ class Incident(models.Model):
     ], required=True)
 
     cm_id = fields.Many2one('cmms.cm', string='Maintenance corrective')
-    pm_id = fields.Many2one('cmms.pm', string='Maintenance préventive', domain=lambda self: [('create_uid','=',self.env.uid)])
+    pm_id = fields.Many2one('cmms.pm', string='Maintenance préventive',
+                            domain=lambda self: [('create_uid', '=', self.env.uid)])
     checklist_history_id = fields.Many2one('cmms.checklist.history', string='Liste de contrôle')
-    intervention_id = fields.Many2one('cmms.intervention', string='Demande d intervention', domain=lambda self: [('user2_id','=',self.env.uid)])
-    equipment_type = fields.Char(related='equipment_id.type',string='Référence machine')
+    intervention_id = fields.Many2one('cmms.intervention', string='Demande d intervention',
+                                      domain=lambda self: [('user2_id', '=', self.env.uid)])
+    equipment_type = fields.Char(related='equipment_id.type', string='Référence machine')
 
     # Dynamically selecting the machine based on the document selected
     @api.onchange('cm_id')
@@ -27,27 +29,51 @@ class Incident(models.Model):
         for rec in self:
             if rec.cm_id:
                 rec.equipment_id = rec.cm_id.equipment_id
+                rec.pm_id = None
+                rec.checklist_history_id = None
+                rec.intervention_id = None
 
     @api.onchange('pm_id')
     def pm_id_on_change(self):
         for rec in self:
             if rec.pm_id:
                 rec.equipment_id = rec.pm_id.equipment_id
+                rec.cm_id = None
+                rec.checklist_history_id = None
+                rec.intervention_id = None
 
     @api.onchange('checklist_history_id')
     def checklist_history_id_on_change(self):
         for rec in self:
             if rec.checklist_history_id:
                 rec.equipment_id = rec.checklist_history_id.equipment_id
+                rec.pm_id = None
+                rec.cm_id = None
+                rec.intervention_id = None
 
     @api.onchange('intervention_id')
     def intervention_id_on_change(self):
         for rec in self:
             if rec.intervention_id:
                 rec.equipment_id = rec.intervention_id.equipment_id
+                rec.pm_id = None
+                rec.checklist_history_id = None
+                rec.cm_id = None
 
-
-
+    def _get_document(self):
+        """
+        Every incident must have only one document attached
+        :return: the document cm, pm, checklist_history, or intervention
+        """
+        for rec in self:
+            if rec.cm_id:
+                return rec.cm_id
+            if rec.pm_id:
+                return rec.pm_id
+            if rec.checklist_history_id:
+                return rec.checklist_history_id
+            if rec.intervention_id:
+                return rec.intervention_id
 
     def action_done(self, cr, uid, ids, context=None):
         """
@@ -56,12 +82,35 @@ class Incident(models.Model):
         self.action_broadcast(cr, uid, ids, context)
         return super(Incident, self).action_done(cr, uid, ids)
 
+    def _get_managers_email(self, cr, uid, context={}):
+        obj = self.pool.get('res.groups')
+        ids = obj.search(cr, uid, [('name', '=', 'cmms-manager')])
+        res = obj.read(cr, uid, ids, ['users'], context)
+        res = res[0]['users']
+        manager_ids = [id for id in res]
+        managers = self.pool.get('res.users').browse(cr, uid, manager_ids)
+        emails = [manager.login for manager in managers]
+        formatted_emails = ''
+        for email in emails:
+            if email:
+                formatted_emails += email + ' ;'
+
+        return formatted_emails
+
+    def _get_priority(self):
+        AVAILABLE_PRIORITIES = {
+            '3': 'Normal',
+            '2': 'Low',
+            '1': 'High'
+        }
+        return AVAILABLE_PRIORITIES.get(str(self.priority))
+
     """email"""
 
     def action_broadcast(self, cr, uid, ids, context={}):
         data_email = []
         text_inter = u"""<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: rgb(255, 255, 255); ">
-                    <p>Bonjour %s, </p>
+                    <p>Bonjour, </p>
                     <p>Nous vous informons que le bon de travail %s a été validé par  %s.</p>
                     <br/>
                     <p></p>
@@ -69,7 +118,10 @@ class Incident(models.Model):
                     <p>Référence bon de travail   : %s </p>
                     <p>Priorité : %s </p>
                     <p>Origine bon de travail  : %s </p>
+                    <p>Machine  : %s </p>
+                    <p>Reference du machine  : %s </p>
                     <p>Date bon de travail  : %s </p>
+                    <p>Date de validation  : %s </p>
                     <p>------------------------------</p>
                     <p> Service du Gmao</p>
                     </div>
@@ -79,12 +131,14 @@ class Incident(models.Model):
                 raise osv.except_osv(u'Email non spécifiée', u'Veuillez indiquer l\'email de Destinataire')
             if object_inter.create_uid.login:
                 text_inter = text_inter % (
-                    object_inter.create_uid.name,
                     object_inter.name, object_inter.create_uid.name,
                     object_inter.name,
-                    object_inter.priority,
-                    object_inter.ref.name,
+                    object_inter._get_priority(),
+                    object_inter._get_document().name,
+                    object_inter._get_document().equipment_id.name,
+                    object_inter._get_document().equipment_id.type,
                     object_inter.date,
+                    datetime.now(),
 
                 )
                 data_email.append(
@@ -94,12 +148,11 @@ class Incident(models.Model):
                         'subtype': 'html',
                         'body_text': False,
                         'body_html': text_inter,
+                        'email_cc': object_inter._get_managers_email()
                     }
                 )
-        a = object_inter.ref
 
         self.pool.get('cmms.parameter.mail').send_email(cr, uid, data_email, module='cmms', param='cmms_event_mail')
 
 
 """fin"""
-

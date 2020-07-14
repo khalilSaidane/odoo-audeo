@@ -85,7 +85,7 @@ class cmms_parameter_mail(osv.osv):
                                                          'date' : time.strftime('%Y-%m-%d %H:%M:%S'),
                                                          'email_from' : sender or mail_from,
                                                          'email_to' : mail['email_to'],
-                                                         'email_cc' : 'k.jedda@audeo.com.tn',
+                                                         'email_cc' : mail['email_cc'],
                                                          'body_html' : mail['body_html'] or False,
                                                          }))
         self.pool.get('mail.mail').send(cr, uid, ids_mail, auto_commit)

@@ -23,7 +23,7 @@
                 <notebook colspan="4">
                     <page string="General" autofocus="True" >
                         <group>
-                            <field name="equipment_id" string="Equipement" readonly="1"/>
+                            <field name="equipment_id" string="Equipement" />
                             <field name="equipment_type" readonly="1"/>
                         </group>
                     </page>
