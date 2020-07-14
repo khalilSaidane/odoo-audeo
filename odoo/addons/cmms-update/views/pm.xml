@@ -6,9 +6,16 @@
             <field name="inherit_id" ref="cmms.view_pm_form"/>
             <field name="arch" type="xml">
                 <field name="equipment_id" position="replace">
-                        <field name="equipment_id"/>
-                        <field name="equipment_type" readonly="1"/>
+                    <field name="equipment_id"/>
+                    <field name="equipment_type" readonly="1"/>
                 </field>
+                <group>
+                                            <separator string="Type " colspan="4"/>
+                     <field name="graissage"/>
+                    <field name="lubrification"/>
+                    <field name="vidange"/>
+                </group>
+
             </field>
         </record>
     </data>

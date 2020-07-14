@@ -8,3 +8,7 @@ class PM(models.Model):
 
     equipment_type = fields.Char(related='equipment_id.type',string='Référence machine')
 
+    graissage = fields.Boolean()
+    lubrification = fields.Boolean()
+    vidange = fields.Boolean()
+
