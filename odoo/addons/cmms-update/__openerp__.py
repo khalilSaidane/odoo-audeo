@@ -27,7 +27,9 @@
         # 'security/ir.model.access.csv',
         'templates.xml',
         'views/incident.xml',
-
+        'views/intervention.xml',
+        'views/pm.xml',
+        'views/cm.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

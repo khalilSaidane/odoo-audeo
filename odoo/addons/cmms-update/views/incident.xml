@@ -5,6 +5,7 @@
             <field name="model">cmms.incident</field>
             <field name="inherit_id" ref="cmms.cmms_incident-view"/>
             <field name="arch" type="xml">
+                <!--replacing the ref field with a selection field and 4 many to one fields-->
                 <field name="ref" position="replace">
                     <group>
                         <field name="request_link"/>
@@ -18,7 +19,7 @@
                                attrs="{'invisible':[('request_link','!=', 'cmms.intervention')]}"/>
                     </group>
                 </field>
-
+                <!--machine and machine type !-->
                 <notebook colspan="4">
                     <page string="General" autofocus="True" >
                         <group>

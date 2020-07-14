@@ -1,0 +1,15 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="cm_form_view">
+            <field name="name">cmmms.update.cm</field>
+            <field name="model">cmms.cm</field>
+            <field name="inherit_id" ref="cmms.view_cm_form"/>
+            <field name="arch" type="xml">
+                <field name="equipment_id" select="1" colspan="1" position="replace">
+                        <field name="equipment_id" select="1" colspan="1"/>
+                        <field name="equipment_type" readonly="1"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
