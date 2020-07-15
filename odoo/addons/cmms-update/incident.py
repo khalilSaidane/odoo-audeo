@@ -123,6 +123,7 @@ class Incident(models.Model):
                     <p>Date de validation  : %s </p>
                     <p>------------------------------</p>
                     <p> Service du Gmao</p>
+                    <p> %s </p>
                     </div>
                     """
         for object_inter in self.browse(cr, uid, ids):
@@ -138,6 +139,7 @@ class Incident(models.Model):
                     object_inter._get_document().equipment_id.type,
                     object_inter.date,
                     datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    object_inter.env.user.company_id.name,
                 )
                 data_email.append(
                     {
