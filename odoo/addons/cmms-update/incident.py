@@ -3,6 +3,12 @@
 from openerp import models, fields, api
 from openerp.osv import osv
 from datetime import datetime
+AVAILABLE_PRIORITIES_FR = {
+    '3':'Normal',
+    '2':'Basse',
+    '1':'Haute'
+}
+
 
 class Incident(models.Model):
     _inherit = ['cmms.incident']
@@ -15,7 +21,8 @@ class Incident(models.Model):
         ('cmms.intervention', 'Demande d intervention'),
     ], required=True)
 
-    cm_id = fields.Many2one('cmms.cm', string='Maintenance corrective')
+    cm_id = fields.Many2one('cmms.cm', string='Maintenance corrective',
+                            domain=lambda self: [('create_uid', '=', self.env.uid)])
     pm_id = fields.Many2one('cmms.pm', string='Maintenance préventive',
                             domain=lambda self: [('create_uid', '=', self.env.uid)])
     checklist_history_id = fields.Many2one('cmms.checklist.history', string='Liste de contrôle')
@@ -97,14 +104,6 @@ class Incident(models.Model):
 
         return formatted_emails
 
-    def _get_priority(self):
-        AVAILABLE_PRIORITIES = {
-            '3': 'Normal',
-            '2': 'Low',
-            '1': 'High'
-        }
-        return AVAILABLE_PRIORITIES.get(str(self.priority))
-
     """email"""
 
     def action_broadcast(self, cr, uid, ids, context={}):
@@ -133,13 +132,12 @@ class Incident(models.Model):
                 text_inter = text_inter % (
                     object_inter.name, object_inter.create_uid.name,
                     object_inter.name,
-                    object_inter._get_priority(),
+                    AVAILABLE_PRIORITIES_FR.get(str(object_inter.priority)),
                     object_inter._get_document().name,
                     object_inter._get_document().equipment_id.name,
                     object_inter._get_document().equipment_id.type,
                     object_inter.date,
-                    datetime.now(),
-
+                    datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 )
                 data_email.append(
                     {
@@ -153,6 +151,5 @@ class Incident(models.Model):
                 )
 
         self.pool.get('cmms.parameter.mail').send_email(cr, uid, data_email, module='cmms', param='cmms_event_mail')
-
 
 """fin"""
