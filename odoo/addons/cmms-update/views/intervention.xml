@@ -20,6 +20,9 @@
                 <tree string="Intervention request" position="attributes" >
                     <attribute name="colors">blue:state=='draft';red:state=='cancel';</attribute>
                 </tree>
+                 <xpath expr="//tree/field[@name='equipment_id']" position="after">
+                    <field name="state"/>
+                </xpath>
             </field>
         </record>
     </data>
