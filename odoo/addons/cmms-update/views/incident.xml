@@ -33,5 +33,16 @@
                 </page>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="incident_tree_view">
+            <field name="name">cmmms.update.incident</field>
+            <field name="model">cmms.incident</field>
+            <field name="inherit_id" ref="cmms.cmms_incident_tree-view"/>
+            <field name="arch" type="xml">
+                <tree string="Incident" position="attributes" >
+                    <attribute name="colors">blue:state=='draft';red:state=='cancel';</attribute>
+                </tree>
+            </field>
+        </record>
     </data>
 </openerp>

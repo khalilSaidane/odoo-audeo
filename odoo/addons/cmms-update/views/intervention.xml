@@ -11,5 +11,16 @@
                 </field>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="intervention_tree_view">
+            <field name="name">cmmms.update.intervention</field>
+            <field name="model">cmms.intervention</field>
+            <field name="inherit_id" ref="cmms.view_intervention_tree"/>
+            <field name="arch" type="xml">
+                <tree string="Intervention request" position="attributes" >
+                    <attribute name="colors">blue:state=='draft';red:state=='cancel';</attribute>
+                </tree>
+            </field>
+        </record>
     </data>
 </openerp>

@@ -144,7 +144,7 @@ class Incident(models.Model):
                 data_email.append(
                     {
                         'subject': "Service du Gmao %s" % object_inter.name,
-                        'email_to': object_inter.create_uid.login,
+                        'email_to': object_inter.env.user.company_id.email,
                         'subtype': 'html',
                         'body_text': False,
                         'body_html': text_inter,

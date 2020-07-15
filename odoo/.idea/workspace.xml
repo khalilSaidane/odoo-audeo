@@ -10,7 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/odoo$odoo8.coverage" NAME="odoo8 Coverage Results" MODIFIED="1594807315788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/odoo$odoo8.coverage" NAME="odoo8 Coverage Results" MODIFIED="1594822140689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -21,8 +21,8 @@
       <file leaf-file-name="incident.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/addons/cmms-update/views/incident.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="75" lean-forward="false" selection-start-line="25" selection-start-column="75" selection-end-line="25" selection-end-column="75" />
+            <state relative-caret-position="378">
+              <caret line="45" column="17" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="45" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -31,8 +31,18 @@
       <file leaf-file-name="cmms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/addons/cmms/cmms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="227" column="7" lean-forward="false" selection-start-line="227" selection-start-column="0" selection-end-line="231" selection-end-column="1" />
+            <state relative-caret-position="195">
+              <caret line="275" column="54" lean-forward="true" selection-start-line="275" selection-start-column="54" selection-end-line="275" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="intervention.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/addons/cmms-update/views/intervention.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="69" lean-forward="false" selection-start-line="17" selection-start-column="69" selection-end-line="17" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -78,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="incident.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="incident.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/addons/cmms-update/incident.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="137" column="67" lean-forward="true" selection-start-line="137" selection-start-column="67" selection-end-line="137" selection-end-column="67" />
+            <state relative-caret-position="481">
+              <caret line="146" column="74" lean-forward="false" selection-start-line="146" selection-start-column="74" selection-end-line="146" selection-end-column="74" />
               <folding>
                 <element signature="e#25#64#0" expanded="true" />
               </folding>
@@ -90,21 +100,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cmms_security.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addons/cmms/security/cmms_security.xml">
+      <file leaf-file-name="calendar_cron.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/addons/calendar/calendar_cron.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="35" />
+            <state relative-caret-position="225">
+              <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ir.model.access.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addons/cmms/security/ir.model.access.csv">
+      <file leaf-file-name="mail_data.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/addons/mail/data/mail_data.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="83" lean-forward="false" selection-start-line="5" selection-start-column="80" selection-end-line="5" selection-end-column="83" />
+            <state relative-caret-position="135">
+              <caret line="30" column="69" lean-forward="false" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -132,6 +142,7 @@
       <find>in_group_36</find>
       <find>incide</find>
       <find>incident</find>
+      <find>ir.cron</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/addons</dir>
@@ -144,18 +155,18 @@
         <option value="$PROJECT_DIR$/addons/cmms/security/ir.model.access.csv" />
         <option value="$PROJECT_DIR$/addons/cmms-update/views/mail_template.xml" />
         <option value="$PROJECT_DIR$/addons/cmms-update/models.py" />
-        <option value="$PROJECT_DIR$/addons/cmms-update/views/intervention.xml" />
         <option value="$PROJECT_DIR$/addons/cmms-update/views/cm.xml" />
         <option value="$PROJECT_DIR$/addons/cmms-update/__openerp__.py" />
         <option value="$PROJECT_DIR$/addons/cmms-update/__init__.py" />
         <option value="$PROJECT_DIR$/addons/cmms-update/cm.py" />
         <option value="$PROJECT_DIR$/addons/cmms-update/pm.py" />
         <option value="$PROJECT_DIR$/addons/cmms-update/views/pm.xml" />
-        <option value="$PROJECT_DIR$/addons/cmms-update/views/incident.xml" />
         <option value="$PROJECT_DIR$/addons/cmms-update/intervention.py" />
         <option value="$PROJECT_DIR$/addons/cmms/cmms.py" />
         <option value="$PROJECT_DIR$/addons/cmms/res_config.py" />
         <option value="$PROJECT_DIR$/addons/cmms-update/incident.py" />
+        <option value="$PROJECT_DIR$/addons/cmms-update/views/incident.xml" />
+        <option value="$PROJECT_DIR$/addons/cmms-update/views/intervention.xml" />
       </list>
     </option>
   </component>
@@ -576,6 +587,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.50235057" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.49764943" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.49764943" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33076924" sideWeight="0.49764943" order="2" side_tool="false" content_ui="tabs" />
@@ -588,7 +600,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.49764943" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -610,22 +621,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/addons/cmms-update/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addons/cmms/security/cmms_security.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="30" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/addons/cmms/security/ir.model.access.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -918,14 +913,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/addons/cmms-update/views/intervention.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="65" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/addons/cmms-update/views/cm.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -938,6 +925,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="31" column="16" lean-forward="false" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -959,14 +947,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="67" lean-forward="false" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addons/cmms-update/views/incident.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="75" lean-forward="false" selection-start-line="25" selection-start-column="75" selection-end-line="25" selection-end-column="75" />
           <folding />
         </state>
       </provider>
@@ -1049,21 +1029,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/addons/cmms/cmms.py">
+    <entry file="file://$PROJECT_DIR$/addons/cmms-update/incident.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="227" column="7" lean-forward="false" selection-start-line="227" selection-start-column="0" selection-end-line="231" selection-end-column="1" />
+        <state relative-caret-position="481">
+          <caret line="146" column="74" lean-forward="false" selection-start-line="146" selection-start-column="74" selection-end-line="146" selection-end-column="74" />
+          <folding>
+            <element signature="e#25#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addons/calendar/calendar_cron.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/addons/cmms-update/incident.py">
+    <entry file="file://$PROJECT_DIR$/addons/mail/data/mail_data.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="137" column="67" lean-forward="true" selection-start-line="137" selection-start-column="67" selection-end-line="137" selection-end-column="67" />
-          <folding>
-            <element signature="e#25#64#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="135">
+          <caret line="30" column="69" lean-forward="false" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addons/cmms/cmms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="275" column="54" lean-forward="true" selection-start-line="275" selection-start-column="54" selection-end-line="275" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addons/cmms-update/views/incident.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="45" column="17" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="45" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addons/cmms-update/views/intervention.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="69" lean-forward="false" selection-start-line="17" selection-start-column="69" selection-end-line="17" selection-end-column="69" />
+          <folding />
         </state>
       </provider>
     </entry>
