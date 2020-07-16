@@ -11,26 +11,23 @@
                         <field name="request_link"/>
                     </group>
                     <group>
-                        <field name="cm_id" attrs="{'invisible':[('request_link','!=', 'cmms.cm')]}"/>
-                        <field name="pm_id" attrs="{'invisible':[('request_link','!=', 'cmms.pm')]}"/>
+                        <field name="cm_id" attrs="{'invisible':[('request_link','!=', 'cmms.cm')]}" nolabel="1"/>
+                        <field name="pm_id" attrs="{'invisible':[('request_link','!=', 'cmms.pm')]}" nolabel="1"/>
                         <field name="checklist_history_id"
-                               attrs="{'invisible':[('request_link','!=', 'cmms.checklist.history')]}"/>
+                               attrs="{'invisible':[('request_link','!=', 'cmms.checklist.history')]}" nolabel="1"/>
                         <field name="intervention_id"
-                               attrs="{'invisible':[('request_link','!=', 'cmms.intervention')]}"/>
+                               attrs="{'invisible':[('request_link','!=', 'cmms.intervention')]}" nolabel="1"/>
                     </group>
                 </field>
                 <!--machine and machine type !-->
-                <notebook colspan="4">
-                    <page string="General" autofocus="True" >
+                <xpath expr="//page[@string='General']" position="replace">
+                    <page string="General" autofocus="autofocus" >
                         <group>
                             <field name="equipment_id" string="Equipement" />
                             <field name="equipment_type" readonly="1"/>
                         </group>
                     </page>
-                </notebook>
-                <page string="General" position="attributes">
-                    <attribute name='invisible'>1</attribute>
-                </page>
+                </xpath>
             </field>
         </record>
 
