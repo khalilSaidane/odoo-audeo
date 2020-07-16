@@ -10,6 +10,7 @@ AVAILABLE_PRIORITIES_FR = {
 }
 
 
+
 class Incident(models.Model):
     _inherit = ['cmms.incident']
     # replacing the ref field with a selection request_link field and 4 many to one fields
@@ -19,16 +20,21 @@ class Incident(models.Model):
         ('cmms.pm', 'Maintenance préventive'),
         ('cmms.checklist.history', 'Liste de contrôle'),
         ('cmms.intervention', 'Demande d intervention'),
-    ], required=True)
+    ], required=True, string="Type de document")
 
-    cm_id = fields.Many2one('cmms.cm', string='Maintenance corrective',
-                            domain=lambda self: [('create_uid', '=', self.env.uid)])
-    pm_id = fields.Many2one('cmms.pm', string='Maintenance préventive',
-                            domain=lambda self: [('create_uid', '=', self.env.uid)])
-    checklist_history_id = fields.Many2one('cmms.checklist.history', string='Liste de contrôle')
-    intervention_id = fields.Many2one('cmms.intervention', string='Demande d intervention',
-                                      domain=lambda self: [('user2_id', '=', self.env.uid)])
+    cm_id = fields.Many2one('cmms.cm',
+                            string='Maintenance corrective',
+                            domain=lambda self: [('create_uid', '=', self.env.uid)] if 'cmms-manager' not in [g.name for g in self.env.user.groups_id] else None)
+    pm_id = fields.Many2one('cmms.pm',
+                            string='Maintenance préventive',
+                            domain=lambda self: [('create_uid', '=', self.env.uid)] if 'cmms-manager' not in [g.name for g in self.env.user.groups_id] else None)
+    checklist_history_id = fields.Many2one('cmms.checklist.history',
+                                           string='Liste de contrôle')
+    intervention_id = fields.Many2one('cmms.intervention',
+                                      string='Demande d intervention',
+                                      domain=lambda self: [('user2_id', '=', self.env.uid)] if 'cmms-manager' not in [g.name for g in self.env.user.groups_id] else None)
     equipment_type = fields.Char(related='equipment_id.type', string='Référence machine')
+
 
     # Dynamically selecting the machine based on the document selected
     @api.onchange('cm_id')
