@@ -9,10 +9,15 @@ class PM(models.Model):
     _inherit = ['cmms.pm']
 
     equipment_type = fields.Char(related='equipment_id.type', string='Référence machine')
-
     graissage = fields.Boolean()
     lubrification = fields.Boolean()
     vidange = fields.Boolean()
+    responsable = fields.Many2one('res.users', string='Responsable', readonly=True)
+
+    @api.model
+    def create(self, vals):
+        vals['responsable'] = self.env.uid
+        return super(PM, self).create(vals)
 
     @api.model
     def send_reminder_mails(self):

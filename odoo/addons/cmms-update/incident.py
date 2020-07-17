@@ -20,7 +20,7 @@ class Incident(models.Model):
         ('cmms.pm', 'Maintenance préventive'),
         ('cmms.checklist.history', 'Liste de contrôle'),
         ('cmms.intervention', 'Demande d intervention'),
-    ], required=True, string="Type de document")
+    ], string="Type de document")
 
     cm_id = fields.Many2one('cmms.cm',
                             string='Maintenance corrective',

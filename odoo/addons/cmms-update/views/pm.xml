@@ -15,7 +15,9 @@
                     <field name="lubrification"/>
                     <field name="vidange"/>
                 </group>
-
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="responsable"/>
+                </xpath>
             </field>
         </record>
 
