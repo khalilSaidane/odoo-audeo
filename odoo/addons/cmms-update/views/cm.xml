@@ -10,8 +10,8 @@
                     <field name="equipment_type" readonly="1"/>
                 </field>
 
-                <xpath expr="//field[@name='user_id']" position="attributes">
-                    <attribute name="readonly">1</attribute>
+                <xpath expr="//field[@name='user_id']" position="replace">
+                    <field name="create_uid" readonly="1" string="Responsable"/>
                 </xpath>
             </field>
         </record>

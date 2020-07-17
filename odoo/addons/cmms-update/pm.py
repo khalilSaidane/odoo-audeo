@@ -12,12 +12,7 @@ class PM(models.Model):
     graissage = fields.Boolean()
     lubrification = fields.Boolean()
     vidange = fields.Boolean()
-    responsable = fields.Many2one('res.users', string='Responsable', readonly=True)
 
-    @api.model
-    def create(self, vals):
-        vals['responsable'] = self.env.uid
-        return super(PM, self).create(vals)
 
     @api.model
     def send_reminder_mails(self):
