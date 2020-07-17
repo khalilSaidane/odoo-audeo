@@ -20,19 +20,15 @@
         </record>
 
 
-        <!--<record forcecreate="True" id="ir_cron_mail_reminder" model="ir.cron">-->
-            <!--<field name="name">Email Reminder</field>-->
-            <!--<field name="model_id" ref="model_cmms-update_pm"/>-->
-            <!--<field name="type">ir.actions.server</field>-->
-            <!--<field name="state">code</field>-->
-            <!--<field name="code">model.send_reminder_mails()</field>-->
-            <!--<field name="interval_number">1</field>-->
-            <!--<field name="interval_type">days</field>-->
-            <!--<field name="numbercall">-1</field>-->
-            <!--<field eval="False" name="doall"/>-->
-            <!--<field eval="'mail.mail'" name="model"/>-->
-            <!--<field eval="'process_email_queue'" name="function"/>-->
-            <!--<field eval="'()'" name="args"/>-->
-        <!--</record>-->
+        <record forcecreate="True" id="ir_cron_mail_reminder" model="ir.cron">
+            <field name="name">Email Reminder for PMs</field>
+            <field name="type">ir.actions.server</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="'cmms.pm'" name="model"/>
+            <field eval="'send_reminder_mails'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
     </data>
 </openerp>

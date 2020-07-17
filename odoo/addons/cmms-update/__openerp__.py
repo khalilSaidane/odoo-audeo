@@ -30,6 +30,7 @@
         'views/intervention.xml',
         'views/pm.xml',
         'views/cm.xml',
+        'views/equipment.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

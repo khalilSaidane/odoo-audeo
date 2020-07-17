@@ -1,0 +1,24 @@
+<openerp>
+    <data>
+         <record model="ir.ui.view" id="equipment_search_view">
+            <field name="name">cmmms.update.equipment.search</field>
+            <field name="model">cmms.equipment</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="type"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="incident_tree_view">
+            <field name="name">cmmms.update.equipment</field>
+            <field name="model">cmms.equipment</field>
+            <field name="inherit_id" ref="cmms.view_equipment_list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='type']" position="replace">
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

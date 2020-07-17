@@ -95,7 +95,7 @@ class Incident(models.Model):
         self.action_broadcast(cr, uid, ids, context)
         return super(Incident, self).action_done(cr, uid, ids)
 
-    def _get_managers_email(self, cr, uid, context={}):
+    def get_managers_email(self, cr, uid, context={}):
         obj = self.pool.get('res.groups')
         ids = obj.search(cr, uid, [('name', '=', 'cmms-manager')])
         res = obj.read(cr, uid, ids, ['users'], context)
@@ -154,7 +154,7 @@ class Incident(models.Model):
                         'subtype': 'html',
                         'body_text': False,
                         'body_html': text_inter,
-                        'email_cc': object_inter._get_managers_email()
+                        'email_cc': object_inter.get_managers_email()
                     }
                 )
 
