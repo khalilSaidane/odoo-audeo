@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Add instructor field to existing view -->
+        <record model="ir.ui.view" id="production_instructor_form_view">
+            <field name="name">production.instructor</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <group position="after">
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="state1"/>
+                            <field name="number"/>
+                            <field name="reference"/>
+                        </group>
+                        <group>
+                            <field name="material"/>
+                            <field name="height"/>
+                            <field name="width"/>
+                            <field name="total_weight"/>
+                        </group>
+                        <group>
+                            <field name="number_of_poses"/>
+                            <field name="number_of_pages"/>
+                            <field name="palette_quantity"/>
+                            <field name="laize_quantity"/>
+                        </group>
+                        <group>
+                            <field name="loss"/>
+                        </group>
+                        <group>
+                            <field name="customer_ids"/>
+                        </group>
+                    </group>
+                </group>
+                <notebook position="inside">
+                    <page string="Colors">
+                        <group>
+                            <field name="color1"/>
+                            <field name="color2"/>
+                            <field name="color3"/>
+                            <field name="color4"/>
+                            <field name="color5"/>
+                        </group>
+                    </page>
+                </notebook>
+                <notebook position="inside">
+                    <page string="Options">
+                        <group>
+                            <field name="option1"/>
+                            <field name="option2"/>
+                            <field name="option3"/>
+                            <field name="option4"/>
+                            <field name="option5"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</openerp>
+
