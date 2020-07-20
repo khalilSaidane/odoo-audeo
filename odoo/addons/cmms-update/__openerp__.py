@@ -20,17 +20,18 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','cmms', 'mail'],
+    'depends': ['cmms','base'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
         'templates.xml',
         'views/incident.xml',
         'views/intervention.xml',
         'views/pm.xml',
         'views/cm.xml',
         'views/equipment.xml',
+        'security/security.xml',
+        # 'security/ir.model.access.csv',
     ],
     # only loaded in demonstration mode
     'demo': [

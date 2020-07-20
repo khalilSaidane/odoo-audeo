@@ -35,7 +35,6 @@ class Incident(models.Model):
                                       domain=lambda self: [('user2_id', '=', self.env.uid)] if 'cmms-manager' not in [g.name for g in self.env.user.groups_id] else None)
     equipment_type = fields.Char(related='equipment_id.type', string='Référence machine')
 
-
     # Dynamically selecting the machine based on the document selected
     @api.onchange('cm_id')
     def cm_id_on_change(self):

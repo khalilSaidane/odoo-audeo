@@ -5,7 +5,7 @@ access_cmms_intervention_user,cmms.intervention,model_cmms_intervention,group_cm
 access_cmms_request_link_user,cmms.request.link,model_cmms_request_link,group_cmms_user,1,1,0,0
 access_cmms_incident_user,cmms.incident,model_cmms_incident,group_cmms_user,1,1,0,0
 access_cmms_archiving3_user,cmms.archiving3,model_cmms_archiving3,group_cmms_user,1,1,0,0
-access_cmms_pm_user,cmms.pm,model_cmms_pm,group_cmms_user,1,1,0,0
+access_cmms_pm_user,cmms.pm,model_cmms_pm,group_cmms_user,1,1,0git ,0
 access_cmms_archiving2_user,cmms.archiving2,model_cmms_archiving2,group_cmms_user,1,1,0,0
 access_cmms_checklist_user,cmms.checklist,model_cmms_checklist,group_cmms_user,1,1,0,0
 access_cmms_question_user,cmms.question,model_cmms_question,group_cmms_user,1,1,0,0
