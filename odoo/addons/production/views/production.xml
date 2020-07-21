@@ -17,6 +17,8 @@
                             <field name="product_uom" groups="product.group_uom" string="Unité de mesure"/>
                             <field name="width" string="Longueur"/>
                             <field name="height" string="Largeur"/>
+                            <field name="unit_dimension" string="Dimension"/>
+                            <field name="weight" string="Poid"/>
                             <field name="total_weight" string="Grammage"/>
                             <field name="loss" string="Perte"/>
                             <field name="number_of_poses" string="Nombre de pose"/>
@@ -51,5 +53,6 @@
                 </group>
             </field>
         </record>
+
     </data>
 </openerp>

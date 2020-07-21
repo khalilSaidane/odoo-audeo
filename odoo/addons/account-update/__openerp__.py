@@ -26,10 +26,11 @@
     'data': [
         # 'security/ir.model.access.csv',
         'templates.xml',
+        'views/account_invoice.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo.xml',
-        'view/account_invoice.xml'
+
     ],
 }
