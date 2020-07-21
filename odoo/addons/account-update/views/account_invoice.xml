@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="account_invoice_form_view">
+            <field name="name">account.invoice.update.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="before">
+                    <!--<field name="production_id" />-->
+                    <field name="create_uid" />
+                    <field name="ok"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -2,7 +2,7 @@
 <openerp>
     <data>
         <record model="ir.ui.view" id="production_instructor_form_view">
-            <field name="name">production.instructor</field>
+            <field name="name">production.update.form</field>
             <field name="model">mrp.production</field>
             <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
             <field name="arch" type="xml">
@@ -53,4 +53,3 @@
         </record>
     </data>
 </openerp>
-
