@@ -4,11 +4,8 @@ from openerp import models, fields
 class Production(models.Model):
     _inherit = 'mrp.production'
 
-    product_id = fields.Many2one('product.product', string='Products', domain=[('sale_ok', '==', True)])
-    date = fields.Datetime(required=True)
-    number = fields.Integer()
-    reference = fields.Char(required=True)
-    material = fields.Char(required=True)
+    reference = fields.Char(required=True, string='Referance interne')
+    material = fields.Many2one('product.template', domain=[('categ_id.name', '=', 'Matiere Consommable')])
     weight = fields.Float(required=True)
     unit_dimension = fields.Float(required=True)
     width = fields.Float()
@@ -20,27 +17,24 @@ class Production(models.Model):
         ('encours', 'Encours'),
         ('partiellement delivrer', 'Partiellement Delivrer'),
         ('terminer', 'Terminer'),
-    ], default='creation', required=True)
+    ], default='creation', required=True, string='etat')
     number_of_pages = fields.Integer()
     total_weight = fields.Float()
     loss = fields.Float()
     palette_quantity = fields.Integer()
     laize_quantity = fields.Integer()
 
-    customer_ids = fields.One2many('res.partner', 'production_id', string='customers', domain=[('customer', '=', True)])
-    color1 = fields.Boolean()
-    color2 = fields.Boolean()
-    color3 = fields.Boolean()
-    color4 = fields.Boolean()
-    color5 = fields.Boolean()
-    option1 = fields.Boolean()
-    option2 = fields.Boolean()
-    option3 = fields.Boolean()
-    option4 = fields.Boolean()
-    option5 = fields.Boolean()
+    customer_ids = fields.Many2one('res.partner',domain=[('customer', '=', True)])
+
+    color_ids = fields.Many2many('production.color')
+    option_ids = fields.Many2many('production.option')
 
 
-class Partner(models.Model):
-    _inherit = 'res.partner'
+    class Color(models.Model):
+        _name = 'production.color'
 
-    production_id = fields.Many2one('mrp.production', domain=[('customer', '=', True)])
+        name = fields.Char(string='Couleur')
+    class Option(models.Model):
+        _name = 'production.option'
+
+        name = fields.Char(string='Option')
