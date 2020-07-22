@@ -1,12 +1,12 @@
 from openerp import models, fields, api
 
 
-class AccountInvoice(models.Model):
-    _inherit = 'account.invoice.line'
+class Move(models.Model):
+    _inherit = 'stock.move'
 
     production_id = fields.Many2one('mrp.production')
 
-    @api.onchange('name')
-    def onchange_name(self):
+    @api.onchange('product_uom')
+    def onchange_product_uom(self):
         for rec in self:
             return {'domain': {'production_id': [('product_id', '=', rec.product_id.id)]}}
