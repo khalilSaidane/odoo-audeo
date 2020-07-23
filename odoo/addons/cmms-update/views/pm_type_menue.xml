@@ -1,0 +1,12 @@
+<openerp>
+    <data>
+        <record id="open_view_pm_type" model="ir.actions.act_window">
+            <field name="name">Type Maintenance Préventive</field>
+            <field name="res_model">pm.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+        </record>
+        <menuitem id="menu_open_view_pm_type" parent="cmms.menu_cmms_configuration" action="open_view_pm_type"/>
+    </data>
+</openerp>

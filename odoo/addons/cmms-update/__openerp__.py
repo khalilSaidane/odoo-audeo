@@ -31,6 +31,7 @@
         'views/cm.xml',
         'views/equipment.xml',
         'security/security.xml',
+        'views/pm_type_menue.xml'
         # 'security/ir.model.access.csv',
     ],
     # only loaded in demonstration mode

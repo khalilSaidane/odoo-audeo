@@ -10,10 +10,7 @@
                     <field name="equipment_type" readonly="1"/>
                 </field>
                 <group>
-                    <separator string="Type " colspan="4"/>
-                    <field name="graissage"/>
-                    <field name="lubrification"/>
-                    <field name="vidange"/>
+                    <field name="type_ids" string="Nom"/>
                 </group>
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="create_uid" string="Responsable" readonly="1"/>
@@ -32,5 +29,7 @@
             <field eval="'send_reminder_mails'" name="function"/>
             <field eval="'()'" name="args"/>
         </record>
+
+
     </data>
 </openerp>

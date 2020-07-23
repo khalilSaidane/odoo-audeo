@@ -9,9 +9,10 @@ class PM(models.Model):
     _inherit = ['cmms.pm']
 
     equipment_type = fields.Char(related='equipment_id.type', string='Référence machine')
-    graissage = fields.Boolean()
-    lubrification = fields.Boolean()
-    vidange = fields.Boolean()
+    type_ids = fields.Many2many('pm.type')
+
+
+
 
 
     @api.model
@@ -93,3 +94,9 @@ class PM(models.Model):
 
 
 """fin"""
+
+
+class Color(models.Model):
+    _name = 'pm.type'
+
+    name = fields.Char(string='Type')
