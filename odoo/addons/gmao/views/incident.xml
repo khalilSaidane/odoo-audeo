@@ -1,0 +1,45 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="incident_form_view">
+            <field name="name">cmmms.update.incident</field>
+            <field name="model">cmms.incident</field>
+            <field name="inherit_id" ref="cmms.cmms_incident-view"/>
+            <field name="arch" type="xml">
+                <!--replacing the ref field with a selection field and 4 many to one fields-->
+                <field name="ref" position="replace">
+                    <group>
+                        <field name="request_link"/>
+                    </group>
+                    <group>
+                        <field name="cm_id" attrs="{'invisible':[('request_link','!=', 'cmms.cm')]}" nolabel="1"/>
+                        <field name="pm_id" attrs="{'invisible':[('request_link','!=', 'cmms.pm')]}" nolabel="1"/>
+                        <field name="checklist_history_id"
+                               attrs="{'invisible':[('request_link','!=', 'cmms.checklist.history')]}" nolabel="1"/>
+                        <field name="intervention_id"
+                               attrs="{'invisible':[('request_link','!=', 'cmms.intervention')]}" nolabel="1"/>
+                    </group>
+                </field>
+                <!--machine and machine type !-->
+                <xpath expr="//page[@string='General']" position="replace">
+                    <page string="General" autofocus="autofocus" >
+                        <group>
+                            <field name="equipment_id" string="Equipement" />
+                            <field name="equipment_type" readonly="1"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="incident_tree_view">
+            <field name="name">cmmms.update.incident</field>
+            <field name="model">cmms.incident</field>
+            <field name="inherit_id" ref="cmms.cmms_incident_tree-view"/>
+            <field name="arch" type="xml">
+                <tree string="Incident" position="attributes" >
+                    <attribute name="colors">blue:state=='draft';red:state=='cancel';</attribute>
+                </tree>
+            </field>
+        </record>
+    </data>
+</openerp>

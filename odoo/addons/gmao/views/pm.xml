@@ -1,0 +1,35 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="pm_form_view">
+            <field name="name">cmmms.update.pm</field>
+            <field name="model">cmms.pm</field>
+            <field name="inherit_id" ref="cmms.view_pm_form"/>
+            <field name="arch" type="xml">
+                <field name="equipment_id" position="replace">
+                    <field name="equipment_id"/>
+                    <field name="equipment_type" readonly="1"/>
+                </field>
+                <group>
+                    <field name="type_ids" string="Nom"/>
+                </group>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="create_uid" string="Responsable" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!--Once every day we check if there is any upcoming pm to remind the managers with an email-->
+        <record forcecreate="True" id="ir_cron_mail_reminder" model="ir.cron">
+            <field name="name">Email Reminder for PMs</field>
+            <field name="type">ir.actions.server</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="'cmms.pm'" name="model"/>
+            <field eval="'send_reminder_mails'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+
+
+    </data>
+</openerp>
