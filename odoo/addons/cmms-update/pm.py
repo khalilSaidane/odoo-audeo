@@ -96,7 +96,7 @@ class PM(models.Model):
 """fin"""
 
 
-class Color(models.Model):
+class Type(models.Model):
     _name = 'pm.type'
 
     name = fields.Char(string='Type')

@@ -1,54 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-	<data>
-		<!-- List VIEW of Draft intervention -->
-		<record model="ir.actions.act_window" id="act_op_draft_work">
-			<field name="name">intervention</field>
-			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">cmms.intervention</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,calendar</field>
-			<field name="domain">[('state','=','draft')]</field>
-			<field name="context">{}</field>
-		</record>
-		<!-- List VIEW of Canceled work-->
-		<record model="ir.actions.act_window" id="act_op_cancel_work">
-			<field name="name">order</field>
-			<field name="type">ir.actions.act_window</field>
-			<field name="res_model">cmms.incident</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<field name="domain">[('state','=','cancel')]</field>
-			<field name="context">{'search_default_month':1}</field>
-		</record>
-			
-		<record id="board_travaux_form" model="ir.ui.view">
-			<field name="name">board.libray.form</field>
-			<field name="model">board.board</field>
-			<field name="arch" type="xml">
-				<form string="Tableau du Bord ">
-					<board style="2-1">
-						<column>
-							<action name="%(act_op_draft_work)d" string="Interventions" />
-							<action name="%(act_op_cancel_work)d" string="Bons de travail" />
-							
-						</column>
-					</board>
-				</form>
-			</field>
-		</record>
-		<record id="open_board_travaux" model="ir.actions.act_window">
-			<field name="name">Tableau de Bord des interventions</field>
-			<field name="res_model">board.board</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">form</field>
-			<field name="usage">menu</field>
-			<field name="view_id" ref="board_travaux_form" />
-		</record>
-		
-		<menuitem id="menu_work_dashboard" name="CMMS"
-              parent="base.menu_reporting_dashboard" 
-              action="open_board_travaux" 
-              sequence="51"/>
-	</data>
+    <data>
+        <!-- List VIEW of ALL intervention -->
+        <record model="ir.actions.act_window" id="act_op_work">
+            <field name="name">intervention</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cmms.intervention</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <!-- List VIEW of All CM -->
+        <record model="ir.actions.act_window" id="act_op_cm">
+            <field name="name">cm</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cmms.cm</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <!-- List VIEW of All PM -->
+        <record model="ir.actions.act_window" id="act_op_pm">
+            <field name="name">pm</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cmms.pm</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <!-- List VIEW of Checklist History Form  -->
+        <record model="ir.actions.act_window" id="act_op_checklist_history">
+            <field name="name">checklist.history</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cmms.checklist.history</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <!-- List VIEW of Canceled work-->
+        <record model="ir.actions.act_window" id="act_op_cancel_work">
+            <field name="name">order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cmms.incident</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state','=','cancel')]</field>
+            <field name="context">{'search_default_month':1}</field>
+        </record>
+
+        <record id="board_travaux_form" model="ir.ui.view">
+            <field name="name">board.libray.form</field>
+            <field name="model">board.board</field>
+            <field name="arch" type="xml">
+                <form string="Tableau du Bord ">
+                    <board style="1-1">
+                        <column>
+                            <action name="%(act_op_work)d" string="Interventions"/>
+                            <action name="%(act_op_cm)d" string="Maintenance corrective"/>
+                            <action name="%(act_op_pm)d" string="Maintenance préventive"/>
+                            <action name="%(act_op_checklist_history)d" string="Remplir une liste de contrôle"/>
+                        </column>
+                        <column>
+                            <action name="%(act_op_cancel_work)d" string="Bons de travail"/>
+                        </column>
+                    </board>
+                </form>
+            </field>
+        </record>
+        <record id="open_board_travaux" model="ir.actions.act_window">
+            <field name="name">Tableau de Bord des interventions</field>
+            <field name="res_model">board.board</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="usage">menu</field>
+            <field name="view_id" ref="board_travaux_form"/>
+        </record>
+
+
+        <menuitem id="menu_work_dashboard" name="CMMS"
+                  parent="base.menu_reporting_dashboard"
+                  action="open_board_travaux"
+                  sequence="51"/>
+    </data>
 </openerp>
