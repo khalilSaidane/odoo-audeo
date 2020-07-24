@@ -1,4 +1,4 @@
-from openerp import models, fields
+from openerp import models, fields, api
 
 
 class Production(models.Model):
@@ -25,16 +25,5 @@ class Production(models.Model):
     laize_quantity = fields.Integer()
 
     customer_ids = fields.Many2one('res.partner',domain=[('customer', '=', True)])
+    attribute_line_ids = fields.One2many(related='product_id.attribute_line_ids', readonly=True)
 
-    color_ids = fields.Many2many('production.color')
-    option_ids = fields.Many2many('production.option')
-
-
-    class Color(models.Model):
-        _name = 'production.color'
-
-        name = fields.Char(string='Couleur')
-    class Option(models.Model):
-        _name = 'production.option'
-
-        name = fields.Char(string='Option')

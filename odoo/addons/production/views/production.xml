@@ -48,8 +48,13 @@
                     </group>
                 </group>
                 <group position="after">
-                    <field name="color_ids" string="Couleurs"/>
-                    <field name="option_ids" string="Options"/>
+                    <field name="attribute_line_ids" widget="one2many_list" context="{'show_attribute': False}">
+                    <tree string="Variants" editable="bottom">
+                        <field name="attribute_id"/>
+                        <field name="value_ids" widget="many2many_tags"/>
+                    </tree>
+                    </field>
+
                 </group>
             </field>
         </record>
