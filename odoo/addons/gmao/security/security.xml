@@ -19,15 +19,15 @@
             <field name="implied_ids" eval="[(4, ref('cmms.group_cmms_user'))]"/>
             <field name="domain_force">[('create_uid','=',user.id)]</field>
         </record>
-        <record model="ir.rule" id="intervention_cmms_user_rule">
+        <record model="ir.rule" id="pm_cmms_user_rule">
             <field name="name">Show my pms only</field>
             <field name="model_id" ref="model_cmms_intervention"/>
             <field name="implied_ids" eval="[(4, ref('cmms.group_cmms_user'))]"/>
             <field name="domain_force">[('user2_id','=',user.id)]</field>
         </record>
-        <record model="ir.rule" id="intervention_cmms_user_rule">
-            <field name="name">Show my checklists only</field>
-            <field name="model_id" ref="cmms.model_cmms_checklist"/>
+        <record model="ir.rule" id="checklists_history_cmms_user_rule">
+            <field name="name">Show my checklists history only</field>
+            <field name="model_id" ref="cmms.model_cmms_checklist_history"/>
             <field name="implied_ids" eval="[(4, ref('cmms.group_cmms_user'))]"/>
             <field name="domain_force">[('create_uid','=',user.id)]</field>
         </record>

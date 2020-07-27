@@ -26,8 +26,8 @@
             <field name="domain_force">[('user2_id','=',user.id)]</field>
         </record>
         <record model="ir.rule" id="intervention_cmms_user_rule">
-            <field name="name">Show my checklists only</field>
-            <field name="model_id" ref="cmms.model_cmms_checklist"/>
+            <field name="name">Show my checklists history only</field>
+            <field name="model_id" ref="cmms.model_cmms_checklist_histoy"/>
             <field name="implied_ids" eval="[(4, ref('cmms.group_cmms_user'))]"/>
             <field name="domain_force">[('create_uid','=',user.id)]</field>
         </record>

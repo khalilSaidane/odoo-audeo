@@ -30,6 +30,7 @@
         'views/pm.xml',
         'views/cm.xml',
         'views/equipment.xml',
+        'views/check_list_history.xml',
         'security/security.xml',
         'views/pm_type_menue.xml',
         'security/ir.model.access.csv',

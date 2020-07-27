@@ -10,7 +10,7 @@
                     <field name="equipment_type" readonly="1"/>
                 </field>
                 <group>
-                    <field name="type_ids" string="Nom"/>
+                    <field name="type_ids" string="Type de maintenance"/>
                 </group>
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="create_uid" string="Responsable" readonly="1"/>

@@ -99,4 +99,4 @@ class PM(models.Model):
 class Type(models.Model):
     _name = 'pm.type'
 
-    name = fields.Char(string='Type')
+    name = fields.Char(string='Tache')

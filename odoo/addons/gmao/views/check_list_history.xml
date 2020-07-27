@@ -1,0 +1,15 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="intervention_form_view">
+            <field name="name">cmmms.update.checklist.history</field>
+            <field name="model">cmms.checklist.history</field>
+            <field name="inherit_id" ref="cmms.view_checklist_history_form"/>
+            <field name="arch" type="xml">
+                <!--  machine type !-->
+                <xpath expr="//field[@name='equipment_id']" position="after">
+                    <field name="equipment_type"  string="Référence machine"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
