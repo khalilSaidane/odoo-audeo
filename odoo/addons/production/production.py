@@ -6,8 +6,8 @@ class Production(models.Model):
 
     reference = fields.Char(required=True, string='Referance interne')
     material = fields.Many2one('product.template', domain=[('categ_id.name', '=', 'Matiere Consommable')])
-    weight = fields.Float(required=True)
-    unit_dimension = fields.Float(required=True)
+    weight = fields.Float()
+    unit_dimension = fields.Float()
     width = fields.Float()
     height = fields.Float()
     number_of_poses = fields.Integer()

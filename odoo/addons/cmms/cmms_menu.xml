@@ -28,9 +28,9 @@
 
        <!-- configuration -->
        <menuitem id="menu_cmms_configuration" name="Configuration" sequence="8" parent="menu_cmm" /> 		 
-    		 <menuitem id="menu_open_view_line_new2" parent="menu_cmms_configuration" action="open_view_line_new"/>
-             <menuitem id="menu_open_view_failure_new" parent="menu_cmms_configuration" action="open_view_failure_new"/>
-             <menuitem id="menu_open_view_link" parent="menu_cmms_configuration" action="open_view_link"/>
+    		 <menuitem id="menu_open_view_line_new2" parent="menu_cmms_configuration" action="open_view_line_new" sequence="0"/>
+             <menuitem id="menu_open_view_failure_new" parent="menu_cmms_configuration" action="open_view_failure_new" sequence="1"/>
+             <menuitem id="menu_open_view_link" parent="menu_cmms_configuration" action="open_view_link" sequence="3"/>
              
       <menuitem id="menu_cmms_config" name="CMMS" parent="base.menu_config" sequence="14" action="action_cmms_config"/>
     </data>

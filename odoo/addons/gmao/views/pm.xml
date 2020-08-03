@@ -15,6 +15,8 @@
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="create_uid" string="Responsable" readonly="1"/>
                 </xpath>
+                <xpath expr="//separator[@string='Follow-up history']" position="replace">
+                </xpath>
             </field>
         </record>
 

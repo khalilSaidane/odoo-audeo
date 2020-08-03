@@ -6,6 +6,6 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem id="menu_open_view_pm_type" parent="cmms.menu_cmms_configuration" action="open_view_pm_type"/>
+        <menuitem id="menu_open_view_pm_type" parent="cmms.menu_cmms_configuration" action="open_view_pm_type" sequence="2"/>
     </data>
 </openerp>

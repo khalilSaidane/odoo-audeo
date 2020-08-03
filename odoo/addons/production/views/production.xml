@@ -15,11 +15,11 @@
                             <field name="reference" string="Réferance interne"/>
                             <field name="product_qty" on_change="product_id_change(product_id, product_qty)"/>
                             <field name="product_uom" groups="product.group_uom" string="Unité de mesure"/>
-                            <field name="width" string="Longueur"/>
-                            <field name="height" string="Largeur"/>
-                            <field name="unit_dimension" string="Dimension"/>
-                            <field name="weight" string="Poid"/>
-                            <field name="total_weight" string="Grammage"/>
+                            <!--<field name="width" string="Longueur"/>-->
+                            <!--<field name="height" string="Largeur"/>-->
+                            <!--<field name="unit_dimension" string="Dimension"/>-->
+                            <!--<field name="weight" string="Poid"/>-->
+                            <!--<field name="total_weight" string="Grammage"/>-->
                             <field name="loss" string="Perte"/>
                             <field name="number_of_poses" string="Nombre de pose"/>
                             <field name="number_of_pages" string="Nombre de page"/>
@@ -37,7 +37,7 @@
                             <field name="routing_id" groups="mrp.group_mrp_routings"/>
                             <field name="user_id"
                                    context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'mrp.group_mrp_user']}"/>
-                            <field name="material" string="Matiére"/>
+                            <field name="material" string="Matiére première"/>
                             <field name="date_planned"/>
                             <field name="location_src_id" domain="[('usage','=','internal')]"
                                    on_change="location_id_change(location_src_id,location_dest_id)"/>
@@ -49,12 +49,11 @@
                 </group>
                 <group position="after">
                     <field name="attribute_line_ids" widget="one2many_list" context="{'show_attribute': False}">
-                    <tree string="Variants" editable="bottom">
-                        <field name="attribute_id"/>
+                    <tree string="Variants" editable="bottom" >
+                        <field name="attribute_id" />
                         <field name="value_ids" widget="many2many_tags"/>
                     </tree>
                     </field>
-
                 </group>
             </field>
         </record>

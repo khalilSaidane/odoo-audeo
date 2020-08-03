@@ -1,0 +1,18 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="sale_tree_view">
+            <field name="name">res.partner.update</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account_followup.customer_followup_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_amount_overdue']" position="replace">
+                    <field name="payment_amount_overdue" sum="Total Of payment_amount_overdues"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_amount_due']" position="replace">
+                    <field name="payment_amount_due" sum="Total Of payment_amount_dues"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
