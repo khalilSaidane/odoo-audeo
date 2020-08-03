@@ -26,7 +26,9 @@
     'data': [
         # 'security/ir.model.access.csv',
         'templates.xml',
-        'views/account_followup.xml'
+        'views/account_followup.xml',
+        'views/client_type_menue.xml',
+        'views/client.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

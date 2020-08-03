@@ -1,0 +1,14 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="client_form_view_">
+            <field name="name">client.update</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="type_id" placeholder="type de client" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
