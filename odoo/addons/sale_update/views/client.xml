@@ -9,6 +9,9 @@
                     <field name="type_id" placeholder="Niveau client" />
                     <field name="market_id" placeholder="Marché" />
                 </xpath>
+                <xpath expr="//field[@name='ref']" position="attributes">
+                    <attribute name="string">Matricule fiscal</attribute>
+                </xpath>
             </field>
         </record>
     </data>
