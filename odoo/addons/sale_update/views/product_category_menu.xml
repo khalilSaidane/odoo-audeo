@@ -1,0 +1,13 @@
+<openerp>
+    <data>
+        <record id="open_view_product_category" model="ir.actions.act_window">
+            <field name="name">Category</field>
+            <field name="res_model">product.template.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="menu_open_view_client_type" parent="base.menu_product" action="open_view_product_category"/>
+    </data>
+</openerp>

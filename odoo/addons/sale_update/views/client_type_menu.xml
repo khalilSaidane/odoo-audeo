@@ -1,0 +1,19 @@
+<openerp>
+    <data>
+        <record id="open_view_client_type" model="ir.actions.act_window">
+            <field name="name">Niveau de client</field>
+            <field name="res_model">res.partner.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="open_view_client_market" model="ir.actions.act_window">
+            <field name="name">Marché</field>
+            <field name="res_model">res.partner.market</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_open_view_client_type" parent="base.menu_sales" action="open_view_client_type"/>
+        <menuitem id="menu_open_view_client_market" parent="base.menu_sales" action="open_view_client_market"/>
+    </data>
+</openerp>

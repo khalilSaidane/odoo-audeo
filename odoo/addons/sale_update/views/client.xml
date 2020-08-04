@@ -6,7 +6,8 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='category_id']" position="after">
-                    <field name="type_id" placeholder="Niveau  client" />
+                    <field name="type_id" placeholder="Niveau client" />
+                    <field name="market_id" placeholder="Marché" />
                 </xpath>
             </field>
         </record>
