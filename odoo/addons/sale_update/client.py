@@ -13,4 +13,10 @@ class Client(models.Model):
 class ClientType(models.Model):
     _name = 'res.partner.type'
 
-    name = fields.Char(string='Type de client')
+    name = fields.Char(string='Niveau client')
+
+    _sql_constraints = [
+        ('name_unique',
+         'UNIQUE(name)',
+         "Le nom doit etre unique"),
+    ]
