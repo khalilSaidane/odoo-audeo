@@ -324,9 +324,9 @@ class res_partner(osv.osv):
 
     _columns = {
         'vat_subjected': fields.boolean('VAT Legal Statement', help="Check this box if the partner is subjected to the VAT. It will be used for the VAT legal statement."),
-        'credit': fields.function(_credit_debit_get,
+        'credit': fields.function(_credit_debit_get,store=True,
             fnct_search=_credit_search, string='Total Receivable', multi='dc', help="Total amount this customer owes you."),
-        'debit': fields.function(_credit_debit_get, fnct_search=_debit_search, string='Total Payable', multi='dc', help="Total amount you have to pay to this supplier."),
+        'debit': fields.function(_credit_debit_get , store=True, fnct_search=_debit_search, string='Total Payable', multi='dc', help="Total amount you have to pay to this supplier."),
         'debit_limit': fields.float('Payable Limit'),
         'total_invoiced': fields.function(_invoice_total, string="Total Invoiced", type='float', groups='account.group_account_invoice'),
 

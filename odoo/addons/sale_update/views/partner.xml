@@ -14,18 +14,5 @@
                 </xpath>
             </field>
         </record>
-
-        <!--<record model="ir.ui.view" id="partner_tree_view">-->
-        <!--<field name="name">partner.tree.update</field>-->
-        <!--<field name="model">res.partner</field>-->
-        <!--<field name="inherit_id" ref="base.view_partner_tree"/>-->
-        <!--<field name="arch" type="xml">-->
-        <!--<xpath expr="//field[@name='email']" position="after">-->
-        <!--<field name="debit" string="Balance" />-->
-        <!--</xpath>-->
-        <!--</field>-->
-        <!--</record>-->
-
-
     </data>
 </openerp>
