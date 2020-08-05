@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "sale_update",
+    'name': "purchase_update",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,18 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale'],
+    'depends': ['base', 'purchase'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'templates.xml',
-        'views/account_followup.xml',
-        'views/client_type_menu.xml',
-        'views/partner.xml',
-        'views/product.xml',
-        'views/product_category_menu.xml',
-        'views/client_action.xml'
+        'views/fournisseur_action.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

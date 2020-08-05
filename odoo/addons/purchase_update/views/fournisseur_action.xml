@@ -1,0 +1,43 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="supplier_tree_view">
+            <field name="name">supplier.tree.view</field>
+            <field name="model">res.partner</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Contacts">
+                    <field name="display_name"/>
+                    <field name="category_id" string="ID"/>
+                    <field name="function" invisible="1"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="debit" string="Balance"/>
+                    <field name="user_id" invisible="1"/>
+                    <field name="is_company" invisible="1"/>
+                    <field name="country_id" invisible="1"/>
+                    <field name="parent_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="purchase_update_action_partner_form" model="ir.actions.act_window">
+            <field name="name">Fournisseurs</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_type">form</field>
+            <field name="context">{ 'tree_view_ref':'supplier_tree_view'}</field>
+            <field name="domain">[('supplier','=', True)]</field>
+        </record>
+         <record id="tree_id" model="ir.actions.act_window.view">
+            <field eval="3" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="supplier_tree_view"/>
+            <field name="act_window_id" ref="purchase_update_action_partner_form"/>
+        </record>
+
+
+        <menuitem id="base.menu_procurement_management_supplier_name" parent="purchase.menu_procurement_management"
+                  name="Fournisseurs"
+                  action="purchase_update_action_partner_form"/>
+    </data>
+</openerp>
